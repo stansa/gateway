@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: zuulserver
+  error:
+    whitelabel:
+      enabled: false
+
+
+zuul:
+  sslHostnameValidationEnabled: false
+  routes:
+    apiexpress-api:
+      path: /apiexpress-api/**
+      url: https://128.66.4.101:9613
+      strip-prefix: false
+    arg:
+      path: /edapt-pubsub/**
+      url: https://128.66.4.101:9613
+      strip-prefix: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
